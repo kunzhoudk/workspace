@@ -2,13 +2,13 @@
 #===================================================================================#
 # Site Information
 #===================================================================================#
-site_name: Workstation
-repo_name: "binbashar/le-ref-architecture-doc"
-repo_url: https://github.com/binbashar/le-ref-architecture-doc
-site_url: https://leverage.binbash.com.ar/
-site_description: Binbash Leverage Reference Architecture Documentation
-site_author: Binbash
-copyright: Copyright &copy; 2017-2022 <a href="https://www.binbash.com.ar">Binbash</a>
+site_name: Workspace
+repo_name: "kunzhoudk/workspace"
+repo_url: git@github.com:kunzhoudk/workspace.git
+# site_url: https://leverage.binbash.com.ar/
+site_description: Kun Zhou's workspace
+site_author: KunZhou
+# copyright: Copyright &copy; 2017-2022 <a href="https://www.binbash.com.ar">Binbash</a>
 
 #===================================================================================#
 # Mkdocs Theme (Material Mkdocs) + Extras
