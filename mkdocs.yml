@@ -1,0 +1,324 @@
+# ref link: https://alinex.gitlab.io/env/mkdocs/
+#===================================================================================#
+# Site Information
+#===================================================================================#
+site_name: Workstation
+repo_name: "binbashar/le-ref-architecture-doc"
+repo_url: https://github.com/binbashar/le-ref-architecture-doc
+site_url: https://leverage.binbash.com.ar/
+site_description: Binbash Leverage Reference Architecture Documentation
+site_author: Binbash
+copyright: Copyright &copy; 2017-2022 <a href="https://www.binbash.com.ar">Binbash</a>
+
+#===================================================================================#
+# Mkdocs Theme (Material Mkdocs) + Extras
+#===================================================================================#
+theme:
+  name: material
+  custom_dir: material
+  language: en
+  #logo: assets/images/logos/binbash-icon.png
+  icon: # https://www.materialpalette.com/icons
+    logo: material/book-open-page-variant
+  favicon: assets/images/logos/favicon.ico
+  font:
+    text: Roboto
+    code: Roboto Mono
+  features:
+    - navigation.tabs
+    - navigation.instant
+    - header.autohide
+    #- content.tabs.link #Insiders only so far
+  palette: # https://www.materialpalette.com/colors
+    - scheme: default
+      #primary: "teal" # comment to replace by /docs/assets/stylesheets
+      accent: deep purple
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    - scheme: slate
+      #primary: "teal" # comment to replace by /docs/assets/stylesheets
+      accent: teal
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+
+  include_sidebar: true
+
+extra:
+  analytics:
+    provider: google
+    property: !ENV GOOGLE_ANALYTICS_KEY
+
+## Temporally only available for Insiders
+## (https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-analytics/#was-this-page-helpful)
+#    feedback:
+#      title: Was this page helpful?
+#      ratings:
+#        - icon: material/emoticon-happy-outline
+#          name: This page was helpful
+#          data: 1
+#          note: >-
+#            Thanks for your feedback!
+#        - icon: material/emoticon-sad-outline
+#          name: This page could be improved
+#          data: 0
+#          note: >-
+#            Thanks for your feedback! Help us improve this page by
+#            using our <a href="..." target=_blank>feedback form</a>.
+
+  social:
+    - icon: material/home
+      link: 'https://www.binbash.com.ar'
+    - icon: material/github
+      link: 'https://github.com/binbashar'
+    - icon: material/linkedin
+      link: 'https://www.linkedin.com/company/binbash'
+    - icon: material/slack
+      link: 'https://join.slack.com/t/binbashar/shared_invite/zt-fw1692b6-9k4ADsWJ47lKacszphXM1w'
+    - icon: material/youtube
+      link: 'https://www.youtube.com/channel/UCUjQ3duzxQB_VtNsKNqPwDA/playlists'
+    - icon: fontawesome/brands/medium
+      link: 'https://medium.com/binbash-inc'
+    - icon: material/twitter
+      link: 'https://twitter.com/binbash_devops'
+    - icon: material/docker
+      link: 'https://hub.docker.com/orgs/binbash'
+
+  alternate:
+    # Switch to English
+    - name: English
+      #link: https://leverage.binbash.com.ar
+      link: /
+      lang: en
+
+    # Switch to Spanish
+    - name: Spanish
+      #link: https://leverage.binbash.com.ar/es/
+      link: /es
+      lang: es
+
+#===================================================================================#
+# Mkdocs Markdown Extentions, Plugins & extras
+#===================================================================================#
+markdown_extensions:
+  - admonition
+  - abbr
+  - attr_list
+  - def_list
+  - footnotes
+  - meta
+  - md_in_html
+  - codehilite
+  - pymdownx.tabbed
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.smartsymbols
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - toc:
+      # insert a blank space before the character
+      permalink: " ¶"
+
+plugins:
+  - search
+#  - awesome-pages
+
+extra_css:
+    - assets/stylesheets/extra.css
+
+#===================================================================================#
+# Mkdocs Navigation Tree
+#===================================================================================#
+nav:
+  - Home:
+    - Home: "index.md"
+    - Welcome: "welcome.md"
+    - First steps: "first-steps/introduction.md"
+    - How it works: "how-it-works/ref-architecture/index.md"
+    - User guide: "user-guide/index.md"
+    - Work with us: "work-with-us/index.md"
+    - License: "license.md"
+
+  - First Steps: 
+    - Introduction: "first-steps/introduction.md"
+    - Set Up your AWS Management account: "first-steps/aws-account-setup.md"
+    - Set Up your local environment: "first-steps/local-setup.md"
+    - Set Up your Leverage project: "first-steps/leverage-project-setup.md"
+    - Orchestrate the Management account: "first-steps/management-account.md"
+    - Orchestrate the Security and Shared accounts: "first-steps/security-and-shared-accounts.md"
+    - Post-deployment: "first-steps/post-deployment.md"
+
+  - How it works:
+    - Reference Architecture:
+        - Overview: "how-it-works/ref-architecture/index.md"
+        - Reference Architecture | AWS: "how-it-works/ref-architecture/ref-architecture-aws.md"
+        - Reference Architecture | EKS: "how-it-works/ref-architecture/ref-architecture-eks.md"
+        - General concepts:
+          - Why Leverage?: "how-it-works/ref-architecture/general-concepts/why-leverage.md"
+          - Why our stack?: "how-it-works/ref-architecture/general-concepts/why-tech-stack.md"
+        - Considerations: "how-it-works/ref-architecture/considerations.md"
+    - Infra Code Library:
+      - Overview: "how-it-works/infra-as-code-library/infra-as-code-library.md"
+      - Forks workflow: "how-it-works/infra-as-code-library/infra-as-code-library-forks.md"
+      - Specifications: "how-it-works/infra-as-code-library/infra-as-code-library-specs.md"
+      - Modules per Tech: "how-it-works/infra-as-code-library/modules-library-per-tech.md"
+    - Leverage CLI: "how-it-works/leverage-cli/index.md"
+    - Features:
+      - Overview: "how-it-works/features/features-overview.md"
+      - AWS Organization:
+        - Organization: "how-it-works/features/organization/organization.md"
+        - Accounts: "how-it-works/features/organization/accounts.md"
+        - Billing: "how-it-works/features/organization/billing.md"
+      - Identities:
+        - Overview: "how-it-works/features/identities/identities.md"
+        - IAM Roles: "how-it-works/features/identities/roles.md"
+      - SSO: "how-it-works/features/sso/sso.md"
+      - Costs: "how-it-works/features/costs/costs.md"
+      - Security:
+        - Overview: "how-it-works/features/security/overview.md"
+        - VPN: "how-it-works/features/security/vpn.md"
+        - Services: "how-it-works/features/security/services.md"
+        - Certificates: "how-it-works/features/security/certificates.md"
+        - Audit | CloudTrail: "how-it-works/features/security/audit-cloudtrail.md"
+        - IAM Access Analyzer: "how-it-works/features/security/iam-access-analyzer.md"
+      - Network:
+        - VPC Topology: "how-it-works/features/network/vpc-topology.md"
+        - VPC Adressing: "how-it-works/features/network/vpc-addressing.md"
+        - VPC Peering: "how-it-works/features/network/vpc-peering.md"
+        - TGW Topology: "how-it-works/features/network/tgw-topology.md"
+        - VPC Outbound Traffic: "how-it-works/features/network/vpc-traffic-out.md"
+        - DNS: "how-it-works/features/network/dns.md"
+      - Secrets: "how-it-works/features/secrets/secrets.md"
+      - Compute:
+        - Overview: "how-it-works/features/compute/overview.md"
+        - K8s Kops: "how-it-works/features/compute/k8s-kops.md"
+        - K8s EKS: "how-it-works/features/compute/k8s-eks.md"
+        - K8s Service Mesh: "how-it-works/features/compute/k8s-service-mesh.md"
+        - Serverless: "how-it-works/features/compute/serverless.md"
+        - Tools: "how-it-works/features/compute/tools.md"
+      - Database:
+        - Databases: "how-it-works/features/database/database.md"
+        - MySQL: "how-it-works/features/database/mysql.md"
+        - PostgresSQL: "how-it-works/features/database/postgres.md"
+      - Storage: "how-it-works/features/storage/storage.md"
+      - CDN: "how-it-works/features/cdn/cdn.md"
+      - CI/CD:
+        - Overview: "how-it-works/features/ci-cd/ci-cd.md"
+        - ArgoCD: "how-it-works/features/ci-cd/k8s-argocd.md"
+      - Monitoring:
+        - Monitoring: "how-it-works/features/monitoring/monitoring.md"
+        - Metrics: "how-it-works/features/monitoring/metrics.md"
+        - Logs: "how-it-works/features/monitoring/logs.md"
+        - Tracing: "how-it-works/features/monitoring/tracing.md"
+        - APM: "how-it-works/features/monitoring/apm.md"
+        - Notifications: "how-it-works/features/monitoring/notification_escalation.md"
+      - Reliability:
+        - Backups: "how-it-works/features/reliability/backups.md"
+        - High Availability: "how-it-works/features/reliability/high-availability.md"
+        - Health Checks: "how-it-works/features/reliability/health-checks.md"
+        - Disaster Recovery: "how-it-works/features/reliability/dr.md"
+    - Read More: "how-it-works/read-more.md"
+
+  - User guide:
+    - Pre-requisites: "user-guide/index.md"
+    - Reference Architecture | AWS:
+      - Project Structure: "user-guide/ref-architecture-aws/dir-structure.md"
+      - Configs: "user-guide/ref-architecture-aws/configs.md"
+      - Credentials: "user-guide/ref-architecture-aws/credentials.md"
+      - Terraform state setup: "user-guide/ref-architecture-aws/tf-state-setup.md"
+      - Terraform state workflow: "user-guide/ref-architecture-aws/tf-state-workflow.md"
+      - Workflow: "user-guide/ref-architecture-aws/workflow.md"
+    - Reference Architecture | Vault:
+      - Project Structure: "user-guide/ref-architecture-vault/dir-structure.md"
+      - Configs: "user-guide/ref-architecture-vault/configs.md"
+      - Terraform state workflow: "user-guide/ref-architecture-vault/tf-state-workflow.md"
+      - Workflow: "user-guide/ref-architecture-vault/workflow.md"
+    - Reference Architecture | Ansible:
+      - Configs: "user-guide/ref-architecture-ansible/configs.md"
+      - Workflow: "user-guide/ref-architecture-ansible/workflow.md"
+    - Leverage CLI:
+      - Install Leverage CLI: "user-guide/leverage-cli/install-leverage-cli.md"
+      - Reference:
+        - Basic features: "user-guide/leverage-cli/reference/basic-features.md"
+        - Commands:
+          - project: "user-guide/leverage-cli/reference/project.md"
+          - credentials: "user-guide/leverage-cli/reference/credentials.md"
+          - aws: "user-guide/leverage-cli/reference/aws.md"
+          - terraform: "user-guide/leverage-cli/reference/terraform.md"
+          - run: "user-guide/leverage-cli/reference/run.md"
+      - Custom tasks: "user-guide/leverage-cli/tasks.md"
+      - Shell environment: "user-guide/leverage-cli/shell.md"
+    - Features:
+      - Overview: "user-guide/features/features-overview.md"
+      - AWS Organization:
+        - Organization Init: "user-guide/features/organization/organization-init.md"
+        - Invite Legacy accounts: "user-guide/features/organization/organization-legacy-accounts.md"
+      - Identities:
+        - gpg: "user-guide/features/identities/gpg.md"
+        - Identities: "user-guide/features/identities/identities.md"
+        - Credentials: "user-guide/features/identities/credentials.md"
+        - Credentials Vault: "user-guide/features/identities/credentials-vault.md"
+      - SSO: "user-guide/features/sso/sso.md"
+      - Costs: "user-guide/features/costs/costs.md"
+      - Security:
+        - VPN: "user-guide/features/security/vpn.md"
+        - Services: "user-guide/features/security/services.md"
+      - Network:
+        - VPC: "user-guide/features/network/vpc-addressing.md"
+        - VPC Peering: "user-guide/features/network/vpc-peering.md"
+        - DNS: "user-guide/features/network/dns.md"
+      - Secrets: "user-guide/features/secrets/secrets.md"
+      - Compute:
+        - Overview: "user-guide/features/compute/overview.md"
+        - K8s Kops: "user-guide/features/compute/k8s-kops.md"
+        - K8s EKS: "user-guide/features/compute/k8s-eks.md"
+        - Serverless: "user-guide/features/compute/serverless.md"
+      - Database:
+        - Databases: "user-guide/features/database/database.md"
+        - MySQL: "user-guide/features/database/mysql.md"
+        - PostgresSQL: "user-guide/features/database/postgres.md"
+      - Storage: "user-guide/features/storage/storage.md"
+      - CDN: "user-guide/features/cdn/cdn.md"
+      - CI/CD: "user-guide/features/ci-cd/ci-cd.md"
+      - Monitoring:
+        - Monitoring: "user-guide/features/monitoring/monitoring.md"
+        - Metrics: "user-guide/features/monitoring/metrics.md"
+        - Logs: "user-guide/features/monitoring/logs.md"
+        - Tracing: "user-guide/features/monitoring/tracing.md"
+        - APM: "user-guide/features/monitoring/apm.md"
+      - Reliability:
+        - Backups: "user-guide/features/reliability/backups.md"
+        - Disaster Recovery: "user-guide/features/reliability/dr.md"
+        - Health Checks: "user-guide/features/reliability/health-checks.md"
+
+  - Work with us:
+      - Overview: "work-with-us/index.md"
+      - Support:
+          - Support: "work-with-us/support.md"
+          - Updates:
+              - December 2021: "work-with-us/updates/product-updates-12-2021.md"
+      - Leverage vs Competition: "work-with-us/leverage-vs-competition.md"
+      #- Subscription Plans: "work-with-us/subscription-plans.md"
+      - Contribute: "work-with-us/contribute.md"
+      - Roadmap:
+        - Reference Architecture:
+          - Overview: "work-with-us/roadmap/ref-arch/overview.md"
+          - Operational Excellence: "work-with-us/roadmap/ref-arch/operational-excellence.md"
+          - Reliability & Performance: "work-with-us/roadmap/ref-arch/reliability-performance.md"
+          - Security: "work-with-us/roadmap/ref-arch/security.md"
+          - Cost Optimization: "work-with-us/roadmap/ref-arch/cost-optimization.md"
+          - Demo Applications: "work-with-us/roadmap/ref-arch/demo-apps.md"
+        - Leverage CLI: "work-with-us/roadmap/leverage-cli/overview.md"
+      - Careers: "work-with-us/careers.md"
+      #- Team: "work-with-us/team.md"
+      #- Testimonials: "work-with-us/testimonials.md"
+      - FAQs: "work-with-us/faqs.md"
+      - Contact Us: https://www.binbash.com.ar/contact
+
